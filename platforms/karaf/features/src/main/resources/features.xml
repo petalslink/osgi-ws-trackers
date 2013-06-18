@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<features name="tracker-features-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+
+    <!--If other features are needed as dependencies, define them like-->
+    <!--<repository>-->
+        <!--mvn:org.ow2.petals.trackers/features/${project.version}/xml/features-->
+    <!--</repository>-->
+
+    <feature name="jaxrs2" version="${project.version}">
+        <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/2.0-rc2</bundle>
+    </feature>
+    <feature name="jaxrs11" version="${project.version}">
+        <bundle dependency="true">mvn:javax.ws.rs/jsr311-api/1.1.1</bundle>
+    </feature>
+
+    <feature name="jersey-2" version="${project.version}">
+        <!--<bundle>mvn:org.osgi/org.osgi.core/${osgi.version}</bundle>-->
+        <!--<bundle>mvn:org.apache.felix/org.osgi.core/1.4.0</bundle>-->
+
+        <bundle dependency="true">mvn:javax.validation/validation-api/1.1.0.Final</bundle>
+        <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/1.2-b04</bundle>
+
+        <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-server/${jersey.version}</bundle>
+        <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
+        <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-client/${jersey.version}</bundle>
+
+        <bundle dependency="true">mvn:org.glassfish.hk2/hk2-utils/2.1.93</bundle>
+        <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/1.0.1</bundle>
+        <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/2.1.93</bundle>
+        <bundle dependency="true">mvn:org.glassfish.hk2/hk2-locator/2.1.93</bundle>
+        <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/2.0-rc2</bundle>
+
+        <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/2.1.93</bundle>
+        <bundle dependency="true">mvn:org.glassfish.hk2.external/asm-all-repackaged/2.1.93</bundle>
+        <bundle dependency="true">mvn:org.glassfish.hk2.external/cglib/2.1.93</bundle>
+        <bundle dependency="true">mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/${jersey.version}</bundle>
+        <bundle dependency='true'>mvn:com.google.guava/guava/${guava.version}</bundle>
+    </feature>
+
+    <feature name="rest-tracker" version="${project.version}">
+        <feature>http</feature>
+        <feature version="${project.version}">jersey-2</feature>
+        <bundle start="true">mvn:org.ow2.petals/org.ow2.petals.wstracker.core/${project.version}</bundle>
+    </feature>
+
+    <feature name="simpleapi" version="${project.version}">
+        <feature version="${project.version}">jaxrs11</feature>
+        <bundle start="true">mvn:org.ow2.petals/org.ow2.petals.wstracker.sample.simpleapi/${project.version}</bundle>
+    </feature>
+
+    <!-- All the trackers -->
+    <feature name="trackers" version="${project.version}">
+        <feature version="${project.version}">rest-tracker</feature>
+    </feature>
+</features>
