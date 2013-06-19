@@ -6,7 +6,7 @@ First install the feature from Maven dependency
 
 Then install feature
 
-    features:install XXX
+    features:install rest-tracker
 
 You can also refresh feature URL in case you updated somthing
 
