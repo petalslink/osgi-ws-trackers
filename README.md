@@ -4,6 +4,15 @@ OSGI-based bundles to be used to detect Web services in bundles and expose them 
 
 Service Trackers will detect registered services which are annotated with JAX-RS or JAX-WS annotations and expose them as REST/SOAP Web Services using standard Web service stacks.
 
+## Get them all
+
+```
+git clone https://github.com/petalslink/osgi-ws-trackers.git
+mvn install
+```
+
+The easiest way to use trackers is to use Apache Karaf (http://karaf.apache.org) and features as explained below.
+
 ## Howto
 
 ### The standard OSGI Way
@@ -65,7 +74,7 @@ Services/Resources will be exposed using some basic naming conventions:
 - if the OSGI bundle header contains a Ginkgo-RestPath value, it will be used as path
 - else the OSGI bundle symbolic name will be used (. will be replaced by /) ie foo.bar.baz will produce /foo/bar/baz path.
 
-## Karaf
+## Apache Karaf
 
 The trackers are available as Apache Karaf features:
 
