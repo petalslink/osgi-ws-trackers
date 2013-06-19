@@ -65,6 +65,15 @@ Services/Resources will be exposed using some basic naming conventions:
 - if the OSGI bundle header contains a Ginkgo-RestPath value, it will be used as path
 - else the OSGI bundle symbolic name will be used (. will be replaced by /) ie foo.bar.baz will produce /foo/bar/baz path.
 
+## Karaf
+
+The trackers are available as Apache Karaf features:
+
+```
+features:addUrl mvn:org.ow2.petals.trackers/features/1.0.0-SNAPSHOT/xml/features
+features:install rest-tracker
+```
+
 ## TODOs
 
 - Configure root path
