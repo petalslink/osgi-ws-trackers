@@ -13,7 +13,7 @@
     <properties>
         <exam.version>3.0.3</exam.version>
         <url.version>1.5.2</url.version>
-        <log.version>0.9.29</log.version>
+        <log.version>1.2.0</log.version>
     </properties>
 
     <artifactId>org.ow2.petals.wstracker.core.test</artifactId>
